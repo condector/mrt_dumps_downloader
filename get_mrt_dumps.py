@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from args_parser import ArgsParser
 from urls_src.mrt_urls import MrtUrlDict
 from download_dumps import DownloadDumps
