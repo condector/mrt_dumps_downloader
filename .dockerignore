@@ -1,8 +1,6 @@
 .git
 README.md
 Dockerfile
-docker-compose.yml
 __pycache__
-nginx.conf
 .idea
 .venv
