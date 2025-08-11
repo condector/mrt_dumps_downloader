@@ -39,3 +39,20 @@ Requirements:
  Would download 4 dump files (2 ribs and 2 updates) from each one of ripe's and routeview's collectors, with dates 2017/01/01, 2018/01/01, 2019/01/01, 2019/01/02 and 2019/01/03.
  
  The folder structure can be changed in `config.py`.
+
+## Docker
+
+You could run using docker, just build the image:
+
+```
+$ cd mrt_dumps_downloader/ 
+$ docker build -t dumpdownloader:1.0 .  
+```
+
+and run pointing the download target dir:
+
+`$ docker run -it --mount type=bind,src=/tmp/dumps/,dst=/app/dumps/ dumpdownloader:1.0 python get_mrt_dumps.py -p ripe routeviews -d 20241201 --ribs --download -n 1`
+
+
+
+
