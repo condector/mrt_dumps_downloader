@@ -4,7 +4,7 @@ from .get_all_collectors_rv import get_rv_collectors
 class RouteViewsLinks(Links):
 
     def __init__(self, args):
-        params = {}
+        params = dict()
         params['domain'] = "http://archive.routeviews.org"
         params['collectors'] = get_rv_collectors()
         params['rib_prefix'] = 'RIBS/rib'

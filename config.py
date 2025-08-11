@@ -1,5 +1,9 @@
 import os
+import logging
 
+# Application log
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+log = logging.getLogger()
 
 def create_and_set_folder(main, subdir):
     path = subdir + '/'
@@ -14,8 +18,5 @@ def file_path(folder, filename):
 
 
 main_dir = os.path.abspath(os.path.dirname(__file__))
-
 dumps_dir = create_and_set_folder(main_dir, 'dumps')
 
-log_dir = create_and_set_folder(main_dir, 'logs')
-log_file = os.path.join(log_dir, 'log.log')

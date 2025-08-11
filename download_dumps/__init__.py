@@ -1,10 +1,6 @@
-from urllib.request import urlopen as get_file
-import urllib.error
 import subprocess
 from datetime import datetime as dt
 import sys
-import os
-import time
 from config import *
 
 
@@ -12,7 +8,6 @@ class DownloadDumps:
 
     def __init__(self, links_dict):
         self.links = links_dict
-        self.log_file = open(log_file, 'a+')
 
     def download_files(self):
         try:
@@ -29,12 +24,12 @@ class DownloadDumps:
                         continue
 
                     try:
-                        args = ['curl', '-k', '-o', file, url]
+                        args = ['curl', '-s', '-k', '-o', file, url]
                         proc = subprocess.run(args)
-                        self.log_event(url)
+                        log.info(url)
 
                     except subprocess.SubprocessError:
-                        self.log_event(url, error=True)
+                        log.error(url)
                         continue
 
         except KeyboardInterrupt:
@@ -82,9 +77,3 @@ class DownloadDumps:
             return 'updates'
         else:
             return 'ribs'
-
-    def log_event(self, file, error=False):
-        text = 'ERROR: ' if error else ''
-        text += dt.now().strftime('%Y-%m-%d %H:%M:%S') + '-'
-        text += file + '\n'
-        self.log_file.write(text)

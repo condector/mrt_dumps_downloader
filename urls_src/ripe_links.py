@@ -4,7 +4,7 @@ from .get_all_collectors_ripe import get_ripe_collectors
 class RipeLinks(Links):
 
     def __init__(self, args):
-        params = {}
+        params = dict()
         params['domain'] = "https://data.ris.ripe.net"
         params['collectors'] = get_ripe_collectors()
         params['rib_prefix'] = 'bview'
